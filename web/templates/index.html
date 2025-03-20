@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Prediksi Jenis-Jenis Alzheimer</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="shortcut icon" href="static/favicon.ico">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!--GitHub icon-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+  <!-- =======================================================
+  * Template Name: Appland - v4.7.0
+  * Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <img src="static/assets/img/logo.png" alt="" class="img-fluid">  <h3 style="display: inline;">Prediksi Jenis-Jenis Alzheimer</h3>
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6" data-aos="fade-up">
+          <div>
+            <h1>Alzheimer</h1>
+            <p>
+              Alzheimer adalah jenis demensia yang paling umum. Penyakit ini merupakan penyakit progresif yang
+              dimulai dengan kehilangan ingatan ringan dan mungkin menyebabkan hilangnya kemampuan untuk berbicara dan
+              menanggapi lingkungan. Penyakit Alzheimer melibatkan bagian otak yang mengendalikan pikiran, ingatan, dan
+              bahasa.
+            </p>
+            <p>
+              Dengan menggunakan situs web ini, Anda dapat mengetahui apakah gambar MRI merupakan penyakit Alzheimer.
+              Penyakit ini diklasifikasikan menurut empat tahap penyakit Alzheimer yang berbeda.
+            <ol>
+              <li>Demensia Ringan</li>
+              <li>Demensia Sedang</li>
+              <li>Tidak Demensia</li>
+              <li>Demensia Sangat Ringan</li>
+            </ol>
+            </p>
+            <h2>Unggah gambar MRI Anda, lalu ketahui apakah Anda menderita penyakit Alzheimer atau tidak.</h2>
+            <p>PS: Proyek ini tidak dapat digunakan untuk tujuan medis yang serius.</p>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up">
+          <img src="static/assets/img/brain.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Disease Classifier Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Klasifikasi Alzheimer</h2>
+          <h4>Unggah gambar MRI Anda, lalu ketahui apakah Anda menderita penyakit Alzheimer atau tidak.</h4>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Upload Gambar MRI:</label>
+                <div class="col-lg-12">
+                  </br>
+                  <input type="file" class="form-control" placeholder="Hours Studied" name="my_image" id="pwd">
+                  </br>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-2">
+                  <button type="submit" class="btn btn-success">Kirim</button>
+                </div>
+              </div>
+            </form>
+            {% if prediction %}
+            </br>
+            <img src="{{img_path}}" height="400px" width="400px">
+            </br>
+            </br>
+            <h2> Prediksi Alzheimer : <i> {{prediction}} </i></h2>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section><!-- End Disease Classifier Section -->
+
+    <!-- ======= App Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang Kami</h2>
+          <h4>Situs ini juga menyertakan Projek Final (Tesis) oleh Luthfi - Udinus.</h4>
+          <h4><a href="https://github.com/adityariski/alzheimer_classifier"><i class="fa fa-github"> GitHub
+                Repository</i></a></h4>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-xl-12">
+            <div class="content d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-md-6">
+                  <p>
+                    <a href="https://github.com/adityariski">
+                      <h5><i class="fa fa-github"></i> Luthfi</h5>
+                    </a>
+                    Mahasiswa Ilmu Komputer dan Teknik di Universitas Udinus.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End App Features Section -->
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+</body>
+
+</html>
