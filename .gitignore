@@ -2,3 +2,5 @@ dataset/
 workdir/
 .ipynb_checkpoints/
 web/static/upload/*
+# *.ipynb
+__pycache__/
