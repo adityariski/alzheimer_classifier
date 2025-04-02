@@ -32,6 +32,3 @@ class AlexNet(Sequential):
         self.add(Dense(num_classes, activation='softmax'))
 
         self.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-# mod = AlexNet((227, 227, 3), 2)
-# mod.summary()

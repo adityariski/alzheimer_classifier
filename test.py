@@ -3,12 +3,13 @@ import cv2
 import numpy as np
 from keras._tf_keras.keras.preprocessing import image
 from keras._tf_keras.keras.saving import load_model
-from keras._tf_keras.keras.utils import plot_model
+from models import AlexNet
+# from keras._tf_keras.keras.utils import plot_model
 
-pretrained_cnn = load_model("./alzheimer_model.keras")
+pretrained_cnn = load_model("./alexnet.keras", AlexNet)
 categories = ["MildDemented", "ModerateDemented", "NonDemented", "VeryMildDemented"]
 
-plot_model(pretrained_cnn, "model_plot.png", show_shapes=True, show_layer_names=True)
+# plot_model(pretrained_cnn, "model_plot.png", show_shapes=True, show_layer_names=True)
 
 def predict_label(img_path):
     #i = Image.open(img_path).convert("L")
@@ -32,5 +33,5 @@ for file in os.listdir(f"dataset/test/{test_category}/"):
     else:
         ko += 1
 
-print(f"OK: {ok}/{c}")
-print(f"KO: {ko}/{c}")
+print(f"OK: {ok}/{c}\n")
+print(f"KO: {ko}/{c}\n")
