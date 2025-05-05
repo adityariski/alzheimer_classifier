@@ -1,34 +1,38 @@
-from keras._tf_keras.keras.models import Sequential
-from keras._tf_keras.keras.layers import Dense, Conv2D, MaxPooling2D, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Input
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import Adam
 
 
-# AlexNet model
-class AlexNet(Sequential):
-    """
-    A tensorflow implementation of the paper:
-    `AlexNet <https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf>`
-    """
-    def __init__(self, input_shape, num_classes):
-        super().__init__()
+def alexnet(num_classes=4):
+    model = Sequential()
+    model.add(Input(shape=(227, 227, 3)))
 
-        self.add(Conv2D(96, kernel_size=(11, 11), strides=4, padding='valid', activation='relu', input_shape=input_shape, kernel_initializer='he_normal'))
-        self.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='valid', data_format=None))
+    # Layer 1
+    model.add(Conv2D(96, (11, 11), strides=(4, 4), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
 
-        self.add(Conv2D(256, kernel_size=(5, 5), strides=1, padding='same', activation='relu', kernel_initializer='he_normal'))
-        self.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='valid', data_format=None))
+    # Layer 2
+    model.add(Conv2D(256, (5, 5), padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
 
-        self.add(Conv2D(384, kernel_size=(3, 3), strides=1, padding='same', activation='relu', kernel_initializer='he_normal'))
+    # Layer 3
+    model.add(Conv2D(384, (3, 3), padding='same', activation='relu'))
 
-        self.add(Conv2D(384, kernel_size=(3, 3), strides=1, padding='same', activation='relu', kernel_initializer='he_normal'))
+    # Layer 4
+    model.add(Conv2D(384, (3, 3), padding='same', activation='relu'))
 
-        self.add(Conv2D(256, kernel_size=(3, 3), strides=1, padding='same', activation='relu', kernel_initializer='he_normal'))
+    # Layer 5
+    model.add(Conv2D(256, (3, 3), padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2)))
 
-        self.add(MaxPooling2D(pool_size=(3, 3), strides=(2, 2), padding='valid', data_format=None))
+    # Flatten and Dense Layers
+    model.add(Flatten())
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dense(num_classes, activation='softmax'))
 
-        self.add(Flatten())
-        self.add(Dense(4096, activation='relu'))
-        self.add(Dense(4096, activation='relu'))
-        self.add(Dense(1000, activation='relu'))
-        self.add(Dense(num_classes, activation='softmax'))
-
-        self.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    # Compile the model
+    optimizer = Adam(learning_rate=0.001)
+    model.compile(optimizer=optimizer,
+                  loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    return model
